@@ -1,24 +1,54 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 第2章
 
-Things you may want to cover:
+#### 学習事項
 
-* Ruby version
+* 生成したファイルをリモートリポジトリへプッシュする方法
+```
+$ git remote add origin git@〜〜:<username>/<ディレクトリ名>.git
+$ git push -u origin --all
+```
+* Railsはアプリケーションの構成にMVC (Model-View-Controller) を採用している
+* scaffoldはアプリケーションの雛形を生成してくれるジェネレーター<br>
+以下コマンドでUserのデータモデルが生成される（以下はnameとemailをパラメータに追加している）
+```
+$ rails generate scaffold User name:string email:string
+```
+* REST(REpresentational State Transfer)アーキテクチャ<br>
+└ RESTは、インターネットそのものやWebアプリケーションなどを構築するためのアーキテクチャのスタイルの1つ<br>
+RailsにおけるRESTとは、アプリケーションを構成するコンポーネント (ユーザーやマイクロポストなど) を「リソース」としてモデル化することを指す。<br>
+CRUD（クラッド）、HTTP requestメソッドに対応<br>
+→　このスタイルを採用することで設計が楽になる。
 
-* System dependencies
 
-* Configuration
+#### つまづき箇所
 
-* Database creation
+* rails consoleの使い方<br>
+rails consoleはRailsアプリケーションを対話的に操作することができる。
+ただ、CREAT、INSERTなどができてしまうので、確認したいだけであればirbを使った方が良い。
 
-* Database initialization
+* Herokuへのpushが　$ git push heroku だと下記メッセージが出てpushできず。<br>
+$ git push heroku master と書けばpushできた。<br>
+```
+fatal: You are pushing to remote 'heroku', which is not the upstream of
+your current branch 'master', without telling me what to push
+to update which remote branch.
+```
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+#### メモ
 
-* ...
+* マイグレーション
+Rails4以前のバージョンではrailsコマンドではなくrakeコマンドを使う必要がある。
+```
+Rails5
+ $ rails db:migrate
+
+Rails4以前
+ $ bundle exec rake db:migrate
+```
+
+* このリポジトリのHeroku 
+https://enigmatic-citadel-01574.herokuapp.com/
