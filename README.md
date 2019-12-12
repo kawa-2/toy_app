@@ -53,7 +53,7 @@ Rails5
  $ rails db:migrate
 
 Rails4以前
- $ bundle exec rake db:migrate
+ $ rake db:migrate
 ```
 
 * このリポジトリのHeroku 
